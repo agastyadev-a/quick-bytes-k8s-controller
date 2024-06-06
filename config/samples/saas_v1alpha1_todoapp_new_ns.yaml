@@ -1,0 +1,15 @@
+apiVersion: saas.thoughtworks.com/v1alpha1
+kind: ToDoApp
+metadata:
+  labels:
+    app.kubernetes.io/name: todoapp-sample-tw-usa
+    app.kubernetes.io/instance: todoapp-sample-tw-usa
+    app.kubernetes.io/part-of: quickbytes-demo
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: quickbytes-demo
+  name: todoapp-sample-tw-usa
+spec:
+  imageVersion: agastyadeva/todo-quickbytes-demo:latest
+  postgresURI: jdbc://something
+  namespace: tw-usa
+  installationName: tw-usa
