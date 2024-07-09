@@ -60,6 +60,7 @@ func (r *ToDoAppReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 	log.Log.Info(req.NamespacedName.String())
 
 	if err := r.Get(ctx, req.NamespacedName, &todo); err == nil {
+		// If TodoApp is not found, create a deployment
 		if apierrors.IsNotFound(err) {
 			log.Log.Error(err, "unable to fetch ToDoApp")
 			return ctrl.Result{}, err
@@ -69,6 +70,7 @@ func (r *ToDoAppReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 		deployTodoApp(clientk8s, deployment)
 
 	} else {
+		// If TodoApp is no longer present in namespace, delete the deployment
 		log.Log.Info("Todo not found in " + req.NamespacedName.String())
 		clientk8s := k8sClient()
 		deployment := getDeployment(clientk8s, req.Namespace)

@@ -28,6 +28,7 @@ func k8sClient() *kubernetes.Clientset {
 	return clientset
 }
 
+// Creates a deployment based on the input values in the TodoApp resource
 func createToDoAppDeployment(installationName string, image string, postgresURI string, namespace string, containerPort int32) *appsv1.Deployment {
 	tm := time.Now()
 	timeStr, _ := fmt.Printf("%s", tm)
@@ -80,6 +81,7 @@ func createToDoAppDeployment(installationName string, image string, postgresURI 
 	return deployment
 }
 
+// Util function to convert int32 to pointer
 func int32Ptr(i int32) *int32 { return &i }
 
 func deployTodoApp(clientset *kubernetes.Clientset, deployment *appsv1.Deployment) {
