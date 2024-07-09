@@ -3,13 +3,13 @@ kind: ToDoApp
 metadata:
   labels:
     app.kubernetes.io/name: todoapp
-    app.kubernetes.io/instance: todoapp-sample
+    app.kubernetes.io/instance: todoapp-tw-india
     app.kubernetes.io/part-of: quickbytes-demo
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/created-by: quickbytes-demo
   name: todoapp-sample
 spec:
-  imageVersion: agastyadeva/todo-quickbytes-demo:latest
+  imageVersion: nginx
   postgresURI: jdbc://something
-  namespace: test
-  installationName: tw-india
+  installationName: thoughtworks-india
+  containerPort: 8000

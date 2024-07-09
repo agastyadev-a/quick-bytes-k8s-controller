@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: controller
   newName: agastyadeva/quickbytes-demo
-  newTag: v0.2.8
+  newTag: v0.2.10

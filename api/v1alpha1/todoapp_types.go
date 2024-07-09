@@ -32,7 +32,7 @@ type ToDoAppSpec struct {
 	InstallationName string `json:"installationName,required"`
 	ImageVersion     string `json:"imageVersion,required"`
 	PostgresURI      string `json:"postgresURI,omitempty"`
-	Namespace        string `json:"namespace,required"`
+	ContainerPort    int32  `json:"containerPort,required"`
 }
 
 // ToDoAppStatus defines the observed state of ToDoApp

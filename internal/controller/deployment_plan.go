@@ -28,7 +28,7 @@ func k8sClient() *kubernetes.Clientset {
 	return clientset
 }
 
-func createToDoAppDeployment(installationName string, image string, postgresURI string, namespace string) *appsv1.Deployment {
+func createToDoAppDeployment(installationName string, image string, namespace string, containerPort int32) *appsv1.Deployment {
 	tm := time.Now()
 	timeStr, _ := fmt.Printf("%s", tm)
 	deployment := &appsv1.Deployment{
@@ -62,13 +62,13 @@ func createToDoAppDeployment(installationName string, image string, postgresURI 
 							Image: image,
 							Env: []corev1.EnvVar{
 								{
-									Name:  "PostgresUri",
-									Value: postgresURI,
+									Name:  "INSTALLATION_NAME",
+									Value: installationName,
 								},
 							},
 							Ports: []corev1.ContainerPort{
 								{
-									ContainerPort: 80,
+									ContainerPort: *int32Ptr(containerPort),
 								},
 							},
 						},

@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/created-by: quickbytes-demo
   name: todoapp-sample-tw-usa
 spec:
-  imageVersion: agastyadeva/todo-quickbytes-demo:latest
+  imageVersion: nginx
   postgresURI: jdbc://something
-  namespace: tw-usa
   installationName: tw-usa
+  containerPort: 8000

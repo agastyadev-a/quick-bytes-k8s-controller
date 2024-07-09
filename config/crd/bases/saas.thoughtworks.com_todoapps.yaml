@@ -34,20 +34,21 @@ spec:
           spec:
             description: ToDoAppSpec defines the desired state of ToDoApp
             properties:
+              containerPort:
+                format: int32
+                type: integer
               imageVersion:
                 type: string
               installationName:
                 description: Foo is an example field of ToDoApp. Edit todoapp_types.go
                   to remove/update
                 type: string
-              namespace:
-                type: string
               postgresURI:
                 type: string
             required:
+            - containerPort
             - imageVersion
             - installationName
-            - namespace
             type: object
           status:
             description: ToDoAppStatus defines the observed state of ToDoApp

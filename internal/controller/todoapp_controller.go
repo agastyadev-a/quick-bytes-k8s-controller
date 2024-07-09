@@ -55,7 +55,6 @@ type ToDoAppReconciler struct {
 func (r *ToDoAppReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = log.FromContext(ctx)
 
-	// TODO(user): your logic here
 	var todo saasv1alpha1.ToDoApp
 
 	log.Log.Info(req.NamespacedName.String())
@@ -66,7 +65,7 @@ func (r *ToDoAppReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 			return ctrl.Result{}, err
 		}
 		clientk8s := k8sClient()
-		deployment := createToDoAppDeployment(todo.Spec.InstallationName, todo.Spec.ImageVersion, todo.Spec.PostgresURI, req.Namespace)
+		deployment := createToDoAppDeployment(todo.Spec.InstallationName, todo.Spec.ImageVersion, todo.Spec.PostgresURI, req.Namespace, todo.Spec.ContainerPort)
 		deployTodoApp(clientk8s, deployment)
 
 	} else {
